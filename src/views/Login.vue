@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="leftComponent">
-      <img src="../assets/Thino/pc.png" alt="PC-LOGO"  />
+      <img src="../assets/Thino/pc.png" alt="PC-LOGO" class="logo" />
     </div>
     <div class="rightComponent">
       <h1>Simplifier vôs tâches.</h1>
@@ -38,6 +38,9 @@ export default {};
   background: linear-gradient(to top left, #2b5876, #4e4376);
   box-shadow: -10px 13px 20px rgba(0, 0, 0, 0.5);
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .rightComponent {
   height: 50vh;
@@ -56,5 +59,9 @@ p {
   font-size: 1em;
   line-height: 1.5em;
   margin-top: 10px;
+}
+
+.logo {
+  width: 30vw;
 }
 </style>
