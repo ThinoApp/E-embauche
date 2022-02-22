@@ -3,23 +3,23 @@
     <h1>Inscription</h1>
     <div class="formContainer">
       <div class="inputContainer inputContainer-1">
-        <img src="../assets/Thino/feather-user.png" alt="nom-icon" class="icon" />
+        <img src="../../assets/Thino/feather-user.png" alt="nom-icon" class="icon" />
         <input type="text" placeholder="nom" class="input" />
       </div>
       <div class="inputContainer inputContainer-2">
-        <img src="../assets/Thino/feather-user.png" alt="prenom-icon" class="icon" />
+        <img src="../../assets/Thino/feather-user.png" alt="prenom-icon" class="icon" />
         <input type="text" placeholder="prenom" class="input" />
       </div>
       <div class="inputContainer inputContainer-3">
-        <img src="../assets/Thino/feather-mail.png" alt="email-icon" class="icon" />
+        <img src="../../assets/Thino/feather-mail.png" alt="email-icon" class="icon" />
         <input type="text" placeholder="E-mail" class="input" />
       </div>
       <div class="inputContainer inputContainer-4">
-        <img src="../assets/Thino/feather-lock.png" alt="lock-icon" class="icon" />
+        <img src="../../assets/Thino/feather-lock.png" alt="lock-icon" class="icon" />
         <input type="password" placeholder="Mot de passe" class="input" />
       </div>
       <div class="inputContainer inputContainer-5">
-        <img src="../assets/Thino/feather-lock.png" alt="confirm-lock-icon" class="icon" />
+        <img src="../../assets/Thino/feather-lock.png" alt="confirm-lock-icon" class="icon" />
         <input type="password" placeholder="Confirmer Mot de passe" class="input" />
       </div>
     </div>

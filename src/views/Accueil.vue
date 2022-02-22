@@ -1,97 +1,195 @@
 <template>
-  <div class="main">
-    <div class="leftComponent">
-      <img src="../assets/Thino/pc.png" alt="logo" class="logo" />
-      <img src="../assets/Thino/lineStyle.png" alt="lineStyle" class="lineStyle" />
-      <h1 class="title">E-BIBLIOTHEQUE</h1>
+  <div>
+    <!-- <img src="../assets/images/bg.jpg" class="bgImage" /> -->
+
+    <div class="main">
+      <section class="box right">
+        <TheHeader :boxToggle="boxToggle" />
+        <article>
+          <h1>
+            Entretien
+            <br />D'embauche
+          </h1>
+          <p>
+            Une plateforme permettant aux entreprises et employés de trouver
+            chacun leurs besoins.
+            <u>
+              Des offres d'emploies pour les employés et différents CV
+              disponibles pour les entreprises
+            </u>
+          </p>
+          <router-link to="/SignIn" class="sign-in-btn" tag="button">
+            Rejoignez-nous
+          </router-link>
+        </article>
+        <div>
+          <img
+            src="../assets/images/Iconfacebook.png"
+            alt="facebook icon"
+            class="social-icon"
+          />
+          <img
+            src="../assets/images/Icontwitter.png"
+            alt="facebook icon"
+            class="social-icon"
+          />
+          <img
+            src="../assets/images/Iconlinkedin.png"
+            alt="facebook icon"
+            class="social-icon"
+          />
+          <img
+            src="../assets/images/Iconwhatsapp.png"
+            alt="facebook icon"
+            class="social-icon"
+          />
+        </div>
+      </section>
     </div>
-    <Login @signUp-event="updateLoginMode" v-if="loginMode" />
-    <SignUp @login-event="updateSignUpMode" v-if="!loginMode" :updateLoginMode="updateLoginMode" />
+    <Login v-bind:loginShow="LoginShow" />
   </div>
 </template>
 <script>
 import Login from "../components/Login";
-import SignUp from "../components/SignUp";
+import TheHeader from "@/components/TheHeader.vue";
 export default {
-  name: "Accueil",
-  components: {
-    Login,
-    SignUp
-  },
   data() {
     return {
-      loginMode: true
+      LoginShow: false,
     };
   },
+  components: {
+    Login,
+    TheHeader,
+  },
   methods: {
-    updateLoginMode(payload) {
-      this.loginMode = payload.value;
-      console.log("io....", this.loginMode);
-    }
-  }
+    boxToggle() {
+      const box = document.querySelector(".right");
+      box.classList.toggle("active");
+      if (this.LoginShow == false) {
+        document.querySelector("ul li:last-child").textContent = "FERMER";
+      } else {
+        document.querySelector("ul li:last-child").textContent = "se connecter";
+      }
+      this.LoginShow = !this.LoginShow;
+    },
+  },
 };
 </script>
-<style  lang="scss">
-$primary: #2b5876;
-$secondary: #4e4376;
-$third: #8af7fd;
-@keyframes bounce {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+<style lang="scss" scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+body {
+  overflow: hidden;
+}
+.bgImage {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top left, $primary, $secondary);
-  color: white;
-  overflow: hidden;
+  z-index: -1;
 }
 
-.leftComponent {
+.main {
+  background-image: url("../assets/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row-reverse;
+  & .box {
+    flex: 0.5;
+    padding: 1em;
+  }
+}
+
+.right {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  -moz-backdrop-filter: blur(25px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 30vw;
-  height: 70vh;
-  margin-right: 5%;
-  background: linear-gradient(to top left, #2b5876, #4e4376);
-  box-shadow: -10px 13px 20px rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
+  justify-content: space-between;
+  transition: 1s;
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  &.active {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateX(-97%);
+  }
+}
+
+article {
+  align-self: center;
+  width: 65%;
   position: relative;
-  overflow: hidden;
+  top: -5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  & h1 {
+    color: white;
+    font-family: "Poppins";
+    font-weight: bold;
+    font-size: 2em;
+  }
+  & p {
+    color: white;
+    font-family: "Arial";
+    font-size: 0.75em;
+    line-height: 1.5em;
+    letter-spacing: 0.5px;
+  }
 }
 
-.logo {
-  width: 20vw;
+ul {
+  display: flex;
+  li {
+    list-style-type: none;
+    margin-right: 2%;
+    font-family: "Apercu Pro";
+    color: white;
+    font-size: 0.8em;
+    &:hover {
+      cursor: pointer;
+    }
+    &:last-child {
+      margin-left: auto;
+    }
+    &.active {
+      color: #fada61;
+      border-bottom: 2px solid #fada61;
+      text-align: center;
+      padding-inline: 0.5em;
+    }
+  }
 }
 
-.lineStyle {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 30vw;
-  animation: bounce 2s ease-in-out;
-  animation-iteration-count: infinite;
-  transform-origin: left bottom;
+.sign-in-btn {
+  background-color: #a356f2;
+  border-radius: 10px;
+  border: none;
+  padding: 1em;
+  font-size: 0.9em;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  box-shadow: 0 3px 31px rgba(0, 0, 0, 0.63);
+  margin-top: 2em;
+  align-self: flex-end;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.title {
-  font-family: arial;
-  border-bottom: 1px solid white;
+.social-icon {
+  width: 2.5em;
+  margin-right: 0.5em;
 }
 </style>
